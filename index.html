@@ -1,104 +1,219 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thomelle</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thomelle — portfolio</title>
 
-        :root {
-            --bg: #0a0a0a;
-            --silver: #c0c0c0;
-            --silver-dim: #8a8a8a;
-            --silver-bright: #e8e8e8;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            background: var(--bg);
-            color: var(--silver);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    :root {
+      --bg: #050505;
+      --text: #d8d8d8;
+      --muted: #777;
+      --line: rgba(255,255,255,.12);
+    }
 
-        /* navigation */
-        nav {
-            padding: 2rem 3rem;
-            display: flex;
-            gap: 3rem;
-        }
+    html, body {
+      min-height: 100%;
+    }
 
-        nav a {
-            color: var(--silver-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: lowercase;
-            transition: color 0.3s ease;
-        }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
 
-        nav a:hover {
-            color: var(--silver-bright);
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
 
-        /* main content area */
-        main {
-            flex: 1;
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(5,5,5,.9), transparent);
+    }
 
-        .content {
-            max-width: 600px;
-        }
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: .2em;
+      text-transform: lowercase;
+    }
 
-        .content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--silver-dim);
-            margin-bottom: 1.5rem;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
 
-        /* big name at bottom */
-        footer {
-            padding: 2rem 3rem 3rem;
-        }
+    nav a {
+      color: #888;
+      text-decoration: none;
+      text-transform: lowercase;
+      font-size: 11px;
+      letter-spacing: .12em;
+      transition: .3s;
+    }
 
-        .name {
-            font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
-            font-weight: 900;
-            font-size: clamp(4rem, 15vw, 12rem);
-            line-height: 0.9;
-            letter-spacing: -0.02em;
-            text-transform: lowercase;
-            color: var(--silver);
-            user-select: none;
-        }
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 12px rgba(255,255,255,.7);
+    }
 
-        /* subtle hover effect */
-        .name:hover {
-            color: var(--silver-bright);
-        }
-    </style>
-<base target="_blank">
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 55vw;
+      height: 55vw;
+      max-width: 700px;
+      max-height: 700px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%,
+          rgba(255,255,255,.14),
+          rgba(255,255,255,.02) 30%,
+          transparent 65%);
+      filter: blur(1px);
+      opacity: .6;
+    }
+
+    .hero {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: #777;
+      font-size: 10px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(70px, 15vw, 210px);
+      line-height: .8;
+      letter-spacing: -.07em;
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          115deg,
+          #444 0%,
+          #fff 18%,
+          #777 31%,
+          #fafafa 47%,
+          #555 58%,
+          #eee 74%,
+          #333 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+
+      filter:
+        drop-shadow(0 0 10px rgba(255,255,255,.15))
+        drop-shadow(0 0 35px rgba(255,255,255,.08));
+    }
+
+    .subtitle {
+      margin-top: 38px;
+      color: #666;
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: lowercase;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #555;
+      font-size: 9px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 0 20px;
+      }
+
+      nav ul {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .orb {
+        width: 90vw;
+        height: 90vw;
+      }
+    }
+  </style>
 </head>
-<body>
-    <nav>
-        <a href="#me">me</a>
-        <a href="#my-path">my path</a>
-        <a href="#projects">projects</a>
-        <a href="#archive">archive</a>
-    </nav>
 
-    <footer>
-        <div class="name">thomelle</div>
-    </footer>
+<body>
+
+  <nav>
+    <a class="logo" href="index.html">thomelle</a>
+
+    <ul>
+      <li><a href="me.html">me</a></li>
+      <li><a href="my-path.html">my path</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="archive.html">archive</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="orb"></div>
+
+    <section class="hero">
+      <div class="eyebrow">digital portfolio · 2026</div>
+      <h1>thomelle</h1>
+      <p class="subtitle">creative mind / digital space / visual archive</p>
+    </section>
+
+    <div class="scroll">scroll to explore</div>
+  </main>
+
 </body>
 </html>
+```
