@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thomelle — me</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #050505;
+      color: #ddd;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .05;
+      z-index: 20;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      height: 76px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: #888;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: lowercase;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav .active {
+      color: white;
+      text-shadow: 0 0 12px white;
+    }
+
+    .logo {
+      color: white;
+      letter-spacing: .2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    main {
+      width: min(1200px, 90vw);
+      margin: 100px auto;
+    }
+
+    .label {
+      color: #555;
+      font-size: 10px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+    }
+
+    h1 {
+      font-size: clamp(60px, 11vw, 150px);
+      line-height: .85;
+      letter-spacing: -.07em;
+
+      background: linear-gradient(
+        120deg,
+        #444,
+        #fff,
+        #777,
+        #eee,
+        #333
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-top: 70px;
+      font-size: clamp(22px, 3vw, 38px);
+      line-height: 1.25;
+      color: #aaa;
+    }
+
+    .intro span {
+      color: white;
+    }
+
+    .meta {
+      margin-top: 110px;
+      border-top: 1px solid #222;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .meta-item {
+      padding: 30px 20px 30px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .meta-item small {
+      display: block;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 9px;
+      margin-bottom: 12px;
+    }
+
+    .meta-item strong {
+      color: #ccc;
+      font-weight: normal;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        margin-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="logo" href="index.html">thomelle</a>
+
+  <ul>
+    <li><a class="active" href="me.html">me</a></li>
+    <li><a href="my-path.html">my path</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="archive.html">archive</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="label">01 — introduction</div>
+
+  <h1>me.</h1>
+
+  <p class="intro">
+    i am <span>thomelle</span> — a creative person exploring
+    design, digital experiences, photography and everything
+    in between.
+  </p>
+
+  <section class="meta">
+
+    <div class="meta-item">
+      <small>name</small>
+      <strong>thomelle</strong>
+    </div>
+
+    <div class="meta-item">
+      <small>based in</small>
+      <strong>the netherlands</strong>
+    </div>
+
+    <div class="meta-item">
+      <small>focus</small>
+      <strong>design / digital / visual</strong>
+    </div>
+
+    <div class="meta-item">
+      <small>currently</small>
+      <strong>creating things</strong>
+    </div>
+
+    <div class="meta-item">
+      <small>status</small>
+      <strong>always exploring</strong>
+    </div>
+
+    <div class="meta-item">
+      <small>year</small>
+      <strong>2026</strong>
+    </div>
+
+  </section>
+</main>
+
+</body>
+</html>
