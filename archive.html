@@ -1,1 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thomelle — archive</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #050505;
+      color: #ddd;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    nav {
+      height: 76px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: #777;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .12em;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav .active {
+      color: white;
+      text-shadow: 0 0 12px white;
+    }
+
+    .logo {
+      color: white;
+      letter-spacing: .2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    main {
+      width: 90vw;
+      margin: 80px auto;
+    }
+
+    .label {
+      color: #555;
+      font-size: 10px;
+      letter-spacing: .3em;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(60px, 10vw, 140px);
+      letter-spacing: -.07em;
+      line-height: .85;
+
+      background: linear-gradient(
+        110deg,
+        #333,
+        #fff,
+        #666,
+        #eee,
+        #333
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin: 70px 0 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      background: transparent;
+      color: #666;
+      border: 1px solid #222;
+      padding: 10px 16px;
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: lowercase;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .filter:hover,
+    .filter.active {
+      color: white;
+      border-color: #aaa;
+      box-shadow: 0 0 15px rgba(255,255,255,.08);
+    }
+
+    .archive {
+      border-top: 1px solid #222;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 100px 1fr 160px;
+      align-items: center;
+      gap: 30px;
+
+      padding: 25px 0;
+      border-bottom: 1px solid #222;
+
+      transition: .3s;
+    }
+
+    .item:hover {
+      padding-left: 15px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .number {
+      color: #444;
+      font-size: 10px;
+      letter-spacing: .15em;
+    }
+
+    .name {
+      color: #ccc;
+      font-size: 18px;
+    }
+
+    .category {
+      color: #555;
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .item {
+        grid-template-columns: 45px 1fr;
+        gap: 15px;
+      }
+
+      .category {
+        grid-column: 2;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="logo" href="index.html">thomelle</a>
+
+  <ul>
+    <li><a href="me.html">me</a></li>
+    <li><a href="my-path.html">my path</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a class="active" href="archive.html">archive</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="label">04 — collection</div>
+  <h1>archive.</h1>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">all</button>
+    <button class="filter" data-filter="design">design</button>
+    <button class="filter" data-filter="photo">photo</button>
+    <button class="filter" data-filter="web">web</button>
+    <button class="filter" data-filter="experiment">experiment</button>
+  </div>
+
+  <section class="archive">
+
+    <article class="item" data-category="design">
+      <div class="number">001</div>
+      <div class="name">visual identity</div>
+      <div class="category">design</div>
+    </article>
+
+    <article class="item" data-category="web">
+      <div class="number">002</div>
+      <div class="name">digital space</div>
+      <div class="category">web</div>
+    </article>
+
+    <article class="item" data-category="photo">
+      <div class="number">003</div>
+      <div class="name">somewhere in between</div>
+      <div class="category">photo</div>
+    </article>
+
+    <article class="item" data-category="experiment">
+      <div class="number">004</div>
+      <div class="name">chrome study</div>
+      <div class="category">experiment</div>
+    </article>
+
+    <article class="item" data-category="design">
+      <div class="number">005</div>
+      <div class="name">type / texture</div>
+      <div class="category">design</div>
+    </article>
+
+    <article class="item" data-category="photo">
+      <div class="number">006</div>
+      <div class="name">visual diary</div>
+      <div class="category">photo</div>
+    </article>
+
+    <article class="item" data-category="web">
+      <div class="number">007</div>
+      <div class="name">digital identity</div>
+      <div class="category">web</div>
+    </article>
+
+    <article class="item" data-category="experiment">
+      <div class="number">008</div>
+      <div class="name">future forms</div>
+      <div class="category">experiment</div>
+    </article>
+
+  </section>
+
+</main>
+
+<script>
+  const filters = document.querySelectorAll(".filter");
+  const items = document.querySelectorAll(".item");
+
+  filters.forEach(filter => {
+    filter.addEventListener("click", () => {
+
+      filters.forEach(btn => btn.classList.remove("active"));
+      filter.classList.add("active");
+
+      const selected = filter.dataset.filter;
+
+      items.forEach(item => {
+
+        if (
+          selected === "all" ||
+          item.dataset.category === selected
+        ) {
+          item.style.display = "grid";
+        } else {
+          item.style.display = "none";
+        }
+
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
