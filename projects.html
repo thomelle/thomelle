@@ -1,1 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thomelle — projects</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #050505;
+      color: #ddd;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    nav a {
+      color: #777;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .12em;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav .active {
+      color: white;
+      text-shadow: 0 0 12px white;
+    }
+
+    .logo {
+      color: white;
+      letter-spacing: .2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .title {
+      position: fixed;
+      top: 130px;
+      left: 5vw;
+      z-index: 10;
+    }
+
+    .title small {
+      color: #555;
+      letter-spacing: .3em;
+      font-size: 9px;
+    }
+
+    .title h1 {
+      margin-top: 15px;
+      font-size: clamp(50px, 8vw, 110px);
+      letter-spacing: -.07em;
+
+      background: linear-gradient(
+        110deg,
+        #333,
+        #fff,
+        #666,
+        #eee,
+        #333
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .scene {
+      position: absolute;
+      width: min(65vw, 700px);
+      height: min(65vw, 700px);
+      left: 50%;
+      top: 54%;
+      transform: translate(-50%, -50%);
+      perspective: 1000px;
+    }
+
+    .globe {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      cursor: grab;
+    }
+
+    .globe:active {
+      cursor: grabbing;
+    }
+
+    .sphere {
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 28%,
+          rgba(255,255,255,.2),
+          rgba(255,255,255,.025) 35%,
+          rgba(0,0,0,.7) 75%
+        );
+
+      border: 1px solid rgba(255,255,255,.3);
+
+      box-shadow:
+        inset -30px -30px 70px rgba(0,0,0,.9),
+        inset 15px 15px 35px rgba(255,255,255,.08),
+        0 0 80px rgba(255,255,255,.04);
+    }
+
+    .project {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1px solid white;
+      border-radius: 50%;
+      background: #111;
+      box-shadow: 0 0 15px rgba(255,255,255,.7);
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: .3s;
+      z-index: 5;
+    }
+
+    .project:hover {
+      width: 20px;
+      height: 20px;
+      background: white;
+      box-shadow: 0 0 30px white;
+    }
+
+    .project span {
+      position: absolute;
+      left: 25px;
+      top: 0;
+      white-space: nowrap;
+      color: #aaa;
+      font-size: 9px;
+      letter-spacing: .1em;
+      pointer-events: none;
+    }
+
+    .info {
+      position: fixed;
+      left: 5vw;
+      bottom: 55px;
+      width: min(380px, 80vw);
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      z-index: 10;
+    }
+
+    .info small {
+      color: #555;
+      letter-spacing: .2em;
+      font-size: 9px;
+    }
+
+    .info h2 {
+      margin-top: 10px;
+      font-size: 25px;
+      font-weight: normal;
+      color: white;
+    }
+
+    .info p {
+      margin-top: 10px;
+      color: #777;
+      line-height: 1.6;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .scene {
+        width: 100vw;
+        height: 100vw;
+      }
+
+      .title {
+        top: 105px;
+      }
+
+      .info {
+        bottom: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="logo" href="index.html">thomelle</a>
+
+  <ul>
+    <li><a href="me.html">me</a></li>
+    <li><a href="my-path.html">my path</a></li>
+    <li><a class="active" href="projects.html">projects</a></li>
+    <li><a href="archive.html">archive</a></li>
+  </ul>
+</nav>
+
+<div class="title">
+  <small>03 — selected work</small>
+  <h1>projects.</h1>
+</div>
+
+<div class="scene">
+  <div class="globe" id="globe">
+    <div class="sphere"></div>
+  </div>
+</div>
+
+<div class="info">
+  <small id="projectNumber">select a project</small>
+  <h2 id="projectTitle">the digital world</h2>
+  <p id="projectDescription">
+    drag the globe to explore the projects.
+  </p>
+</div>
+
+<script>
+  const globe = document.getElementById("globe");
+
+  const projects = [
+    {
+      name: "project one",
+      description: "a visual identity exploring chrome, light and digital space."
+    },
+    {
+      name: "project two",
+      description: "an experimental interface built around movement and interaction."
+    },
+    {
+      name: "project three",
+      description: "a photographic exploration of places, people and memory."
+    },
+    {
+      name: "project four",
+      description: "a digital concept combining typography and futuristic visuals."
+    },
+    {
+      name: "project five",
+      description: "an archive of visual experiments and creative research."
+    },
+    {
+      name: "project six",
+      description: "a minimal web experience focused on atmosphere."
+    },
+    {
+      name: "project seven",
+      description: "an exploration of 3D forms and digital environments."
+    },
+    {
+      name: "project eight",
+      description: "a personal experiment combining code, image and sound."
+    }
+  ];
+
+  const projectPoints = [];
+
+  /*
+    Fibonacci sphere:
+    creates evenly distributed points around the globe.
+  */
+
+  const count = projects.length;
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+  for (let i = 0; i < count; i++) {
+    const y = 1 - (i / (count - 1)) * 2;
+    const radius = Math.sqrt(1 - y * y);
+    const theta = goldenAngle * i;
+
+    const x = Math.cos(theta) * radius;
+    const z = Math.sin(theta) * radius;
+
+    const point = document.createElement("div");
+    point.className = "project";
+
+    point.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span>`;
+
+    point.dataset.x = x;
+    point.dataset.y = y;
+    point.dataset.z = z;
+
+    point.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      document.getElementById("projectNumber").textContent =
+        `project ${String(i + 1).padStart(2, "0")}`;
+
+      document.getElementById("projectTitle").textContent =
+        projects[i].name;
+
+      document.getElementById("projectDescription").textContent =
+        projects[i].description;
+    });
+
+    globe.appendChild(point);
+    projectPoints.push(point);
+  }
+
+  let rotationX = -15;
+  let rotationY = 20;
+
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  function render() {
+    globe.style.transform =
+      `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+    requestAnimationFrame(render);
+  }
+
+  render();
+
+  globe.addEventListener("pointerdown", e => {
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    globe.setPointerCapture(e.pointerId);
+  });
+
+  globe.addEventListener("pointermove", e => {
+    if (!dragging) return;
+
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+
+    rotationY += dx * .4;
+    rotationX -= dy * .4;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  globe.addEventListener("pointerup", () => {
+    dragging = false;
+  });
+
+  /*
+    Auto rotation.
+  */
+  setInterval(() => {
+    if (!dragging) {
+      rotationY += .12;
+    }
+  }, 16);
+
+  /*
+    Place project points on the sphere.
+  */
+  function positionPoints() {
+    const radius = globe.clientWidth * .42;
+
+    projectPoints.forEach(point => {
+      const x = Number(point.dataset.x) * radius;
+      const y = Number(point.dataset.y) * radius;
+      const z = Number(point.dataset.z) * radius;
+
+      point.style.left = `calc(50% + ${x}px)`;
+      point.style.top = `calc(50% + ${y}px)`;
+
+      point.style.transform =
+        `translate(-50%, -50%) translateZ(${z}px)`;
+    });
+  }
+
+  window.addEventListener("resize", positionPoints);
+  positionPoints();
+</script>
+
+</body>
+</html>
