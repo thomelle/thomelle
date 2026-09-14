@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thomelle — my path</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #050505;
+      color: #ddd;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4' type='fractalNoise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      height: 76px;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: #777;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: .12em;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav .active {
+      color: white;
+      text-shadow: 0 0 12px white;
+    }
+
+    .logo {
+      color: white;
+      letter-spacing: .2em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    header {
+      width: 90vw;
+      margin: 70px auto 50px;
+    }
+
+    .label {
+      color: #555;
+      font-size: 10px;
+      letter-spacing: .3em;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(60px, 10vw, 140px);
+      line-height: .85;
+      letter-spacing: -.07em;
+
+      background: linear-gradient(
+        110deg,
+        #333,
+        #fff,
+        #777,
+        #eee,
+        #333
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gallery {
+      width: 90vw;
+      margin: auto;
+      columns: 4 240px;
+      column-gap: 4px;
+    }
+
+    .photo {
+      break-inside: avoid;
+      margin-bottom: 4px;
+      position: relative;
+      overflow: hidden;
+      background: #111;
+      cursor: pointer;
+    }
+
+    .photo img {
+      width: 100%;
+      display: block;
+      transition: transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .photo:hover img {
+      transform: scale(1.04);
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 45px 18px 18px;
+      background: linear-gradient(transparent, rgba(0,0,0,.9));
+      color: white;
+      font-size: 11px;
+      letter-spacing: .08em;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .35s;
+    }
+
+    .photo:hover .caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .gallery {
+        columns: 2 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="logo" href="index.html">thomelle</a>
+
+  <ul>
+    <li><a href="me.html">me</a></li>
+    <li><a class="active" href="my-path.html">my path</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="archive.html">archive</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="label">02 — visual archive</div>
+  <h1>my path.</h1>
+</header>
+
+<section class="gallery">
+
+  <div class="photo">
+    <img src="images/my-path/1.jpg" alt="my path 01">
+    <div class="caption">01 — beginning</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/2.jpg" alt="my path 02">
+    <div class="caption">02 — somewhere</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/3.jpg" alt="my path 03">
+    <div class="caption">03 — movement</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/4.jpg" alt="my path 04">
+    <div class="caption">04 — memory</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/5.jpg" alt="my path 05">
+    <div class="caption">05 — somewhere else</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/6.jpg" alt="my path 06">
+    <div class="caption">06 — now</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/7.jpg" alt="my path 07">
+    <div class="caption">07 — details</div>
+  </div>
+
+  <div class="photo">
+    <img src="images/my-path/8.jpg" alt="my path 08">
+    <div class="caption">08 — future</div>
+  </div>
+
+</section>
+
+</body>
+</html>
