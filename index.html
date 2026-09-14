@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thomelle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --silver: #c0c0c0;
+            --silver-dim: #8a8a8a;
+            --silver-bright: #e8e8e8;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--silver);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* navigation */
+        nav {
+            padding: 2rem 3rem;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--silver-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--silver-bright);
+        }
+
+        /* main content area */
+        main {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--silver-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        /* big name at bottom */
+        footer {
+            padding: 2rem 3rem 3rem;
+        }
+
+        .name {
+            font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
+            font-weight: 900;
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: lowercase;
+            color: var(--silver);
+            user-select: none;
+        }
+
+        /* subtle hover effect */
+        .name:hover {
+            color: var(--silver-bright);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <nav>
+        <a href="#me">me</a>
+        <a href="#my-path">my path</a>
+        <a href="#projects">projects</a>
+        <a href="#archive">archive</a>
+    </nav>
+
+    <main>
+        <div class="content" id="me">
+            <p>welcome to my personal archive. this is where i collect my work, thoughts, and everything in between.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="name">thomelle</div>
+    </footer>
+</body>
+</html>
